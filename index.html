@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google" value="notranslate">
+  <title> - </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:900&display=swap');
+
+  body {
+    position: relative; /* mandatory for scrollspy */
+    background-color: rgb(243,242,247);
+  }
+
+  main {
+    padding-top: 106px; /* The fixed nav is 56px. To that we add 50px */
+  }
+
+  p {
+    margin-bottom: 25px;
+    line-height: 1.75;
+  }
+
+  figure {
+    display:block;
+    margin: 0;
+    padding: 0;
+  }
+
+  pre {
+    width: 90%;
+    margin: 0 auto 50px auto;
+    font-size: 16px;
+    background-color: rgb(240,240,240);
+    border: 2px solid #333;
+    border-radius: 15px;
+    overflow:scroll;
+  }
+
+  .article {
+    min-height: 500px;
+    margin: 0 auto 50px auto;
+    padding: 25px;
+    background-color: #FFF;
+    border: 2px solid #61DAFB;
+    border-radius: 25px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.25);
+  }
+
+  .fancy-h1 {
+    margin: 0;
+    padding: 0px 25px;
+    color: snow;
+    text-align: center;
+    font-size: 50px;
+    font-family: Montserrat;
+    letter-spacing: 3px;
+    line-height: 1.25;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: violet;
+    text-shadow: -3px 3px 6px rgba(0,0,0,0.15);
+  }
+
+  .fancy-h2 {
+    margin: 0 0 25px 0;
+    color: snow;
+    font-size: 40px;
+    font-family: Montserrat;
+    letter-spacing: 1px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: violet;
+    text-shadow: -2px 2px 4px rgba(0,0,0,0.15);
+  }
+
+  .child-mb-1 > * { margin-bottom: 0.25rem !important; }
+  .child-mb-2 > * { margin-bottom: 0.5rem !important;  }
+  .child-mb-3 > * { margin-bottom: 1rem !important;    }
+  .child-mb-4 > * { margin-bottom: 1.5rem !important;  }
+  .child-mb-5 > * { margin-bottom: 3rem !important;    }
+
+  .w-90 { width: 90% !important; }
+
+  #primary-header nav {
+    background: #12c2e9;
+    background: -webkit-linear-gradient(to left, #f64f59, #c471ed, #12c2e9);
+    background: linear-gradient(to left, #f64f59, #c471ed, #12c2e9);
+    background-size: 170%;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.75);
+  }
+
+  [id^="target-"] {
+    margin-top: -106px;
+    padding-bottom: 106px;
+  }
+
+
+  /* =============================================================================
+                                  Media Queries
+  ============================================================================= */
+  /* Mobile-first media queries that follow Bootstrap's breakpoints.
+  Note: xs is implied by the default styles. */
+
+  /* sm */
+  @media (min-width: 576px) {
+  }
+
+  /* md */
+  @media (min-width: 768px) {
+  }
+
+  /* lg */
+  @media (min-width: 992px) {
+  }
+
+  /* xl */
+  @media (min-width: 1200px) {
+  }
+
+  /* xxl */
+  @media (min-width: 1400px) {
+    main > .container-fluid { max-width: 1400px; }
+  }
+  </style>
+</head>
+
+
+<!-- ===========================================================================
+
+============================================================================ -->
+
+
+<body data-bs-spy="scroll" data-bs-target="#primary-navbar" data-bs-offset="0" tabindex="0">
+
+  <header id="primary-header">
+    <nav id="primary-navbar" class="navbar navbar-expand-sm navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a id="brand" class="navbar-brand" href="#!">Scrollspy Fix</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="nav-menu" class="collapse navbar-collapse">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link link-light" href="#target-1">Article 1</a>
+            <a class="nav-link link-light" href="#target-2">Article 2</a>
+            <a class="nav-link link-light" href="#target-3">Article 3</a>
+            <a class="nav-link link-light" href="#target-4">Article 4</a>
+            <a class="nav-link link-light" href="#target-5">Article 5</a>
+          </div>
+        </div><!-- <div id="nav-menu" class="collapse navbar-collapse"> -->
+      </div><!-- <div class="container-fluid"> -->
+    </nav>
+  </header>
+
+
+  <!-- =========================================================================
+
+  ========================================================================== -->
+
+  <div id="target-1"></div>
+  <main>
+    <div class="container-fluid px-md-5">
+
+
+      <article  class="article">
+        <h2 class="fancy-h2">Article 1:</h2>
+
+
+        <h3 class="text-secondary">Preliminary Setup:</h3>
+
+
+        <p>In order to get the scrollspy to work in conjunction with a fixed primary navigation
+        see this <a href="https://css-tricks.com/hash-tag-links-padding/" target="_blank">CSS Tricks article</a>.
+        Essentially, rather that pinning the target <code>id</code>s on the actual
+        elements instead assign them to dummy <code>&#60;div&#62;</code>s.</p>
+
+
+        <pre><code>
+  &#60;div id="target-2"&#62;&#60;/div&#62;
+        </code></pre>
+
+
+        <p>Then add negative <code>margin-top</code>, and <code>padding-bottom</code>:</p>
+
+
+        <pre><code>
+  [id^="target-"] {
+    margin-top: -106px;
+    padding-bottom: 106px;
+  }
+        </code></pre>
+
+
+        <p>In this case, I'm using +/-<code>106px</code> because the primary navigation
+        has a computed height of <code>56px</code>. To that an additional <code>50px</code>
+        is added for a little extra space.</p>
+
+
+        <p>One of the downsides of scrollspy is that if there's not enough space below
+        the final target such that if the final target can't touch the top of the viewport,
+        then it will not get recognized by the scrollspy.
+        One way around this is to set extra padding at the bottom. Better yet,
+        wrap the last content section (i.e., content just after the final target element)
+        in a div with the following styles:</p>
+
+
+        <pre><code>
+  &#60;div style="min-height: 100vh;"&#62;
+    ...
+  &#60;/div&#62;
+        </code></pre>
+
+
+        <p>Another approach would be to place the target element higher in the content
+        The only issue is that it's actual position would change relative
+        to the content as the viewport expands and contracts.</p>
+
+
+        <p>In any case, one needs to be especially aware of how the final target
+        behaves at <code>xs</code> an <code>xxl</code> widths.</p>
+
+
+        <!-- =============================================================== -->
+
+
+        <h3 class="mt-5 text-secondary">The Fix:</h3>
+
+
+        <p>The Bootstrap scrollspy docs instruct us to call the following method when
+        adding or removing elements from the DOM:</p>
+
+
+        <pre><code>
+  bootstrap.ScrollSpy.getInstance(dataSpyEl).refresh();
+        </code></pre>
+
+
+        <p>However, this should also be done when resizing the viewport width. The only problem is
+        that all calculations made by scrollspy are being performed when
+        scrolltop value is equal to zero.
+        <a style="text-decoration:none;font-size: 24px; line-height: 0;" href="https://stackoverflow.com/questions/21661549/bootstrap-scrollspy-bug-when-resizing-browser" target="_blank">*</a>
+        In order to correctly reset the scrollspy we need do the following things:</p>
+
+
+        <ul  class="mb-5 child-mb-3">
+          <li>Cache the current scroll position</li>
+
+          <li>Disable Bootstrap's smooth scroll</li>
+
+          <li>Jump to the top of the page</li>
+
+          <li>Call <code>bootstrap.ScrollSpy.getInstance(document.body).refresh()</code></li>
+
+          <li>Jump back to our previous position</li>
+
+          <li>Enable Bootstrap's smooth scroll.</li>
+        </ul>
+
+
+        <pre><code>
+  function refresh(){
+    const position                     = document.documentElement.scrollTop;
+    const html                         = document.getElementsByTagName("HTML")[0];
+    html.style.scrollBehavior          = 'auto';
+    document.documentElement.scrollTop = 0;
+
+    bootstrap.ScrollSpy.getInstance(document.body).refresh();
+
+    document.documentElement.scrollTop = position;
+    html.style.scrollBehavior          = '';
+  }
+        </code></pre>
+
+
+        <p>This should be called when the window resizes. However, we only want to call
+        it once each time. In order to do this we run it through a <a href="https://davidwalsh.name/javascript-debounce-function" target="_blank">debounce()</a> function.</p>
+
+
+        <pre><code>
+  function debounce(func, wait, immediate){
+    var timeout;
+
+    return (
+      function(){
+        var context = this;
+        var args    = arguments;
+        var callNow = immediate && !timeout;
+
+        function later(){
+          timeout = null;
+          if (!immediate){ func.apply(context, args); }
+        }
+
+        if (callNow){ func.apply(context, args); }
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      }
+    );
+  }
+
+  const debounced_refresh = debounce(refresh, 500);
+        </code></pre>
+
+
+        <p>Then call it as follows:</p>
+
+
+        <pre><code>
+  window.onresize = function(){ debounced_refresh(); };
+        </code></pre>
+      </article>
+
+
+      <!-- =====================================================================
+
+      ====================================================================== -->
+
+
+      <div id="target-2"></div>
+
+
+      <article class="article">
+        <h2 class="fancy-h2">Article 2:</h2>
+
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tortor ex,
+        viverra vel commodo quis, efficitur sed turpis. Class aptent taciti sociosqu
+        ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus aliquet
+        urna ut velit convallis sollicitudin. Donec cursus, velit eu bibendum efficitur,
+        sapien felis rhoncus orci, vitae venenatis orci ligula quis nisi. In sed quam
+        consequat, hendrerit eros vel, vehicula augue. Nunc ligula eros, pellentesque
+        in pharetra non, imperdiet eu nisl. Mauris sit amet odio vel dui dictum pharetra.
+        In mollis, velit nec condimentum tempus, augue elit efficitur magna, vel rhoncus
+        est sem non mi. Aenean fermentum est id rutrum dictum. Nunc tempus vestibulum sapien,
+        non egestas lectus iaculis id. Donec pulvinar dui tempus elementum varius. Sed sodales,
+        erat eu pretium tincidunt, quam magna pretium erat, molestie convallis tellus ligula
+        non eros. Mauris odio nisl, ullamcorper sed vulputate tristique, ullamcorper in felis.
+        Suspendisse sapien purus, tempor in sollicitudin sit amet, aliquet ut risus.</p>
+
+
+        <p>In hac habitasse platea dictumst. Donec massa magna, elementum et venenatis nec,
+        aliquam nec dui. Donec ullamcorper ut sem vitae malesuada. In aliquam rhoncus mauris
+        vitae porttitor. Curabitur fringilla dui id erat fringilla, ut venenatis felis interdum.
+        Nam et iaculis mi. Donec posuere porta tortor et euismod.</p>
+
+
+        <p>Duis posuere ligula ac eros tincidunt feugiat. Donec sagittis libero
+        non sollicitudin eleifend. Etiam dignissim dapibus massa et tristique.
+        In eu ex quis dui feugiat ullamcorper at eget ligula. Fusce et semper sapien,
+        sed dictum erat. Sed ac felis pellentesque, tincidunt tortor a, venenatis
+        massa. Proin sit amet ipsum eget risus rutrum scelerisque sit amet non velit.
+        Etiam sagittis odio vitae interdum consequat.</p>
+
+
+        <p>Aliquam vulputate, urna eu convallis pharetra, eros lorem feugiat orci,
+        eu accumsan mi nulla sit amet nunc. Nulla vulputate a lectus in maximus.
+        Cras non augue in metus hendrerit blandit. Pellentesque eleifend enim quis
+        dui ullamcorper tincidunt. Class aptent taciti sociosqu ad litora torquent
+        per conubia nostra, per inceptos himenaeos. Phasellus non facilisis ipsum.
+        Proin aliquet ipsum vel dui accumsan, ac elementum quam pellentesque. Sed
+        sagittis ex purus, at placerat ipsum dignissim eu. Aenean tempus risus at
+        metus sodales tincidunt.</p>
+
+
+        <p>Ut interdum non velit sit amet tincidunt. Suspendisse id mauris et ligula
+        varius imperdiet. Nunc congue eros a diam facilisis ornare. Nulla facilisi.
+        Nam malesuada, enim maximus dignissim bibendum, ex augue interdum ex, at
+        mollis lacus mi a justo. Donec ac sapien ut sem convallis condimentum a
+        id leo. Praesent pharetra in velit ut pretium. Aenean mattis turpis quis
+        tellus elementum vestibulum.</p>
+      </article>
+
+
+      <!-- =====================================================================
+
+      ====================================================================== -->
+
+
+      <div id="target-3"></div>
+
+
+      <article class="article">
+        <h2 class="fancy-h2">Article 3:</h2>
+
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tortor ex,
+        viverra vel commodo quis, efficitur sed turpis. Class aptent taciti sociosqu
+        ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus aliquet
+        urna ut velit convallis sollicitudin. Donec cursus, velit eu bibendum efficitur,
+        sapien felis rhoncus orci, vitae venenatis orci ligula quis nisi. In sed quam
+        consequat, hendrerit eros vel, vehicula augue. Nunc ligula eros, pellentesque
+        in pharetra non, imperdiet eu nisl. Mauris sit amet odio vel dui dictum pharetra.
+        In mollis, velit nec condimentum tempus, augue elit efficitur magna, vel rhoncus
+        est sem non mi. Aenean fermentum est id rutrum dictum. Nunc tempus vestibulum sapien,
+        non egestas lectus iaculis id. Donec pulvinar dui tempus elementum varius. Sed sodales,
+        erat eu pretium tincidunt, quam magna pretium erat, molestie convallis tellus ligula
+        non eros. Mauris odio nisl, ullamcorper sed vulputate tristique, ullamcorper in felis.
+        Suspendisse sapien purus, tempor in sollicitudin sit amet, aliquet ut risus.</p>
+
+
+        <p>In hac habitasse platea dictumst. Donec massa magna, elementum et venenatis nec,
+        aliquam nec dui. Donec ullamcorper ut sem vitae malesuada. In aliquam rhoncus mauris
+        vitae porttitor. Curabitur fringilla dui id erat fringilla, ut venenatis felis interdum.
+        Nam et iaculis mi. Donec posuere porta tortor et euismod.</p>
+
+
+        <p>Duis posuere ligula ac eros tincidunt feugiat. Donec sagittis libero
+        non sollicitudin eleifend. Etiam dignissim dapibus massa et tristique.
+        In eu ex quis dui feugiat ullamcorper at eget ligula. Fusce et semper sapien,
+        sed dictum erat. Sed ac felis pellentesque, tincidunt tortor a, venenatis
+        massa. Proin sit amet ipsum eget risus rutrum scelerisque sit amet non velit.
+        Etiam sagittis odio vitae interdum consequat.</p>
+
+
+        <p>Aliquam vulputate, urna eu convallis pharetra, eros lorem feugiat orci,
+        eu accumsan mi nulla sit amet nunc. Nulla vulputate a lectus in maximus.
+        Cras non augue in metus hendrerit blandit. Pellentesque eleifend enim quis
+        dui ullamcorper tincidunt. Class aptent taciti sociosqu ad litora torquent
+        per conubia nostra, per inceptos himenaeos. Phasellus non facilisis ipsum.
+        Proin aliquet ipsum vel dui accumsan, ac elementum quam pellentesque. Sed
+        sagittis ex purus, at placerat ipsum dignissim eu. Aenean tempus risus at
+        metus sodales tincidunt.</p>
+
+
+        <p>Ut interdum non velit sit amet tincidunt. Suspendisse id mauris et ligula
+        varius imperdiet. Nunc congue eros a diam facilisis ornare. Nulla facilisi.
+        Nam malesuada, enim maximus dignissim bibendum, ex augue interdum ex, at
+        mollis lacus mi a justo. Donec ac sapien ut sem convallis condimentum a
+        id leo. Praesent pharetra in velit ut pretium. Aenean mattis turpis quis
+        tellus elementum vestibulum.</p>
+      </article>
+
+
+      <!-- =====================================================================
+
+      ====================================================================== -->
+
+
+      <div id="target-4"></div>
+
+
+      <article class="article">
+        <h2 class="fancy-h2">Article 4:</h2>
+
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tortor ex,
+        viverra vel commodo quis, efficitur sed turpis. Class aptent taciti sociosqu
+        ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus aliquet
+        urna ut velit convallis sollicitudin. Donec cursus, velit eu bibendum efficitur,
+        sapien felis rhoncus orci, vitae venenatis orci ligula quis nisi. In sed quam
+        consequat, hendrerit eros vel, vehicula augue. Nunc ligula eros, pellentesque
+        in pharetra non, imperdiet eu nisl. Mauris sit amet odio vel dui dictum pharetra.
+        In mollis, velit nec condimentum tempus, augue elit efficitur magna, vel rhoncus
+        est sem non mi. Aenean fermentum est id rutrum dictum. Nunc tempus vestibulum sapien,
+        non egestas lectus iaculis id. Donec pulvinar dui tempus elementum varius. Sed sodales,
+        erat eu pretium tincidunt, quam magna pretium erat, molestie convallis tellus ligula
+        non eros. Mauris odio nisl, ullamcorper sed vulputate tristique, ullamcorper in felis.
+        Suspendisse sapien purus, tempor in sollicitudin sit amet, aliquet ut risus.</p>
+
+
+        <p>In hac habitasse platea dictumst. Donec massa magna, elementum et venenatis nec,
+        aliquam nec dui. Donec ullamcorper ut sem vitae malesuada. In aliquam rhoncus mauris
+        vitae porttitor. Curabitur fringilla dui id erat fringilla, ut venenatis felis interdum.
+        Nam et iaculis mi. Donec posuere porta tortor et euismod.</p>
+
+
+        <p>Duis posuere ligula ac eros tincidunt feugiat. Donec sagittis libero
+        non sollicitudin eleifend. Etiam dignissim dapibus massa et tristique.
+        In eu ex quis dui feugiat ullamcorper at eget ligula. Fusce et semper sapien,
+        sed dictum erat. Sed ac felis pellentesque, tincidunt tortor a, venenatis
+        massa. Proin sit amet ipsum eget risus rutrum scelerisque sit amet non velit.
+        Etiam sagittis odio vitae interdum consequat.</p>
+
+
+        <p>Aliquam vulputate, urna eu convallis pharetra, eros lorem feugiat orci,
+        eu accumsan mi nulla sit amet nunc. Nulla vulputate a lectus in maximus.
+        Cras non augue in metus hendrerit blandit. Pellentesque eleifend enim quis
+        dui ullamcorper tincidunt. Class aptent taciti sociosqu ad litora torquent
+        per conubia nostra, per inceptos himenaeos. Phasellus non facilisis ipsum.
+        Proin aliquet ipsum vel dui accumsan, ac elementum quam pellentesque. Sed
+        sagittis ex purus, at placerat ipsum dignissim eu. Aenean tempus risus at
+        metus sodales tincidunt.</p>
+
+
+        <p>Ut interdum non velit sit amet tincidunt. Suspendisse id mauris et ligula
+        varius imperdiet. Nunc congue eros a diam facilisis ornare. Nulla facilisi.
+        Nam malesuada, enim maximus dignissim bibendum, ex augue interdum ex, at
+        mollis lacus mi a justo. Donec ac sapien ut sem convallis condimentum a
+        id leo. Praesent pharetra in velit ut pretium. Aenean mattis turpis quis
+        tellus elementum vestibulum.</p>
+      </article>
+
+
+      <!-- =====================================================================
+
+      ====================================================================== -->
+
+      <div id="target-5"></div>
+
+
+      <div style="min-height: 100vh;">
+        <article class="article">
+          <h2 class="fancy-h2">Article 5:</h2>
+
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tortor ex,
+          viverra vel commodo quis, efficitur sed turpis. Class aptent taciti sociosqu
+          ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus aliquet
+          urna ut velit convallis sollicitudin. Donec cursus, velit eu bibendum efficitur,
+          sapien felis rhoncus orci, vitae venenatis orci ligula quis nisi. In sed quam
+          consequat, hendrerit eros vel, vehicula augue. Nunc ligula eros, pellentesque
+          in pharetra non, imperdiet eu nisl. Mauris sit amet odio vel dui dictum pharetra.
+          In mollis, velit nec condimentum tempus, augue elit efficitur magna, vel rhoncus
+          est sem non mi. Aenean fermentum est id rutrum dictum. Nunc tempus vestibulum sapien,
+          non egestas lectus iaculis id. Donec pulvinar dui tempus elementum varius. Sed sodales,
+          erat eu pretium tincidunt, quam magna pretium erat, molestie convallis tellus ligula
+          non eros. Mauris odio nisl, ullamcorper sed vulputate tristique, ullamcorper in felis.
+          Suspendisse sapien purus, tempor in sollicitudin sit amet, aliquet ut risus.</p>
+
+
+          <p>In hac habitasse platea dictumst. Donec massa magna, elementum et venenatis nec,
+          aliquam nec dui. Donec ullamcorper ut sem vitae malesuada. In aliquam rhoncus mauris
+          vitae porttitor. Curabitur fringilla dui id erat fringilla, ut venenatis felis interdum.
+          Nam et iaculis mi. Donec posuere porta tortor et euismod.</p>
+
+
+          <p>Duis posuere ligula ac eros tincidunt feugiat. Donec sagittis libero
+          non sollicitudin eleifend. Etiam dignissim dapibus massa et tristique.
+          In eu ex quis dui feugiat ullamcorper at eget ligula. Fusce et semper sapien,
+          sed dictum erat. Sed ac felis pellentesque, tincidunt tortor a, venenatis
+          massa. Proin sit amet ipsum eget risus rutrum scelerisque sit amet non velit.
+          Etiam sagittis odio vitae interdum consequat.</p>
+
+
+          <p>Aliquam vulputate, urna eu convallis pharetra, eros lorem feugiat orci,
+          eu accumsan mi nulla sit amet nunc. Nulla vulputate a lectus in maximus.
+          Cras non augue in metus hendrerit blandit. Pellentesque eleifend enim quis
+          dui ullamcorper tincidunt. Class aptent taciti sociosqu ad litora torquent
+          per conubia nostra, per inceptos himenaeos. Phasellus non facilisis ipsum.
+          Proin aliquet ipsum vel dui accumsan, ac elementum quam pellentesque. Sed
+          sagittis ex purus, at placerat ipsum dignissim eu. Aenean tempus risus at
+          metus sodales tincidunt.</p>
+
+
+          <p>Ut interdum non velit sit amet tincidunt. Suspendisse id mauris et ligula
+          varius imperdiet. Nunc congue eros a diam facilisis ornare. Nulla facilisi.
+          Nam malesuada, enim maximus dignissim bibendum, ex augue interdum ex, at
+          mollis lacus mi a justo. Donec ac sapien ut sem convallis condimentum a
+          id leo. Praesent pharetra in velit ut pretium. Aenean mattis turpis quis
+          tellus elementum vestibulum.</p>
+        </article>
+      </div>
+    </div><!-- <div class="container-fluid px-md-5"> -->
+  </main>
+
+
+  <!-- =========================================================================
+
+  ========================================================================== -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  <script>
+  function debounce(func, wait, immediate){
+    var timeout;
+
+  	return (
+      function(){
+    		var context = this;
+        var args    = arguments;
+        var callNow = immediate && !timeout;
+
+        function later(){
+    			timeout = null;
+    			if (!immediate){ func.apply(context, args); }
+    		}
+
+        if (callNow){ func.apply(context, args); }
+        clearTimeout(timeout);
+    		timeout = setTimeout(later, wait);
+    	}
+    );
+  }
+
+
+
+
+  function refresh(){
+    const position                     = document.documentElement.scrollTop;
+    const html                         = document.getElementsByTagName("HTML")[0];
+    html.style.scrollBehavior          = 'auto';
+    document.documentElement.scrollTop = 0;
+    bootstrap.ScrollSpy.getInstance(document.body).refresh();
+    document.documentElement.scrollTop = position;
+    html.style.scrollBehavior          = '';
+  }
+
+
+
+
+  const debounced_refresh = debounce(refresh, 500);
+  window.onresize = function(){ debounced_refresh(); };
+  </script>
+</body>
+</html>
